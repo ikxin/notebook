@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+        padding-top: 20px;
+      }
+      canvas {
+        box-shadow: 0 0 10px #333;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body onload="draw()">
+    <canvas id="canvas" width="800" height="600"> 浏览器不支持Canvas </canvas>
+    <script>
+      function draw() {
+        var canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+
+          // 填充三角形
+          ctx.beginPath();
+          ctx.moveTo(25, 25);
+          ctx.lineTo(105, 25);
+          ctx.lineTo(25, 105);
+          ctx.fill();
+
+          // 描边三角形
+          ctx.beginPath();
+          ctx.moveTo(125, 125);
+          ctx.lineTo(125, 45);
+          ctx.lineTo(45, 125);
+          ctx.closePath();
+          ctx.stroke();
+        }
+      }
+    </script>
+  </body>
+</html>

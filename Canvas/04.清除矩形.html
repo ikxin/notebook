@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+        padding-top: 20px;
+      }
+      canvas {
+        box-shadow: 0 0 10px #333;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body onload="draw()">
+    <canvas id="canvas" width="800" height="600"> 浏览器不支持Canvas </canvas>
+    <script>
+      function draw() {
+        var canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+
+          // 绘制矩形
+          ctx.fillRect(25, 25, 100, 100);
+          // 清除矩形
+          ctx.clearRect(45, 45, 60, 60);
+          // 绘制边框
+          ctx.strokeRect(50, 50, 50, 50);
+        }
+      }
+    </script>
+  </body>
+</html>
