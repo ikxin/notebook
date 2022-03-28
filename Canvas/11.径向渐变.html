@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+        padding-top: 20px;
+      }
+      canvas {
+        box-shadow: 0 0 10px #333;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body onload="draw()">
+    <canvas id="canvas" width="800" height="600"> 浏览器不支持Canvas </canvas>
+    <script>
+      function draw() {
+        var canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+
+          var radgrad = ctx.createRadialGradient(50, 50, 10, 50, 50, 30);
+          radgrad.addColorStop(0, "#a7d30c");
+          radgrad.addColorStop(0.9, "#019f62");
+          radgrad.addColorStop(1, "rgba(1,159,98,0)");
+          ctx.fillStyle = radgrad;
+          ctx.fillRect(0, 0, 150, 150);
+
+          var radgrad2 = ctx.createRadialGradient(100, 100, 20, 110, 120, 50);
+          radgrad2.addColorStop(0, "#ff5f98");
+          radgrad2.addColorStop(0.9, "#ff0188");
+          radgrad2.addColorStop(1, "rgba(255,1,136,0)");
+          ctx.fillStyle = radgrad2;
+          ctx.fillRect(0, 0, 150, 150);
+        }
+      }
+    </script>
+  </body>
+</html>
