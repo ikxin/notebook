@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+        padding-top: 20px;
+      }
+      canvas {
+        box-shadow: 0 0 10px #333;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body onload="draw()">
+    <canvas id="canvas" width="800" height="600"> 浏览器不支持Canvas </canvas>
+    <script>
+      function draw() {
+        var canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+          // animate直线运动
+          ctx.beginPath();
+          var x = 0,
+            y = 0,
+            width = 100,
+            height = 100;
+          ctx.fillStyle = "pink";
+          ctx.fillRect(x, y, width, height);
+          var speedX = 2;
+          var speedY = 2;
+
+          setInterval(function () {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            x += speedX;
+            if (x > canvas.width - width) {
+              speedX *= -1;
+            } else if (x < 0) {
+              speedX *= -1;
+            }
+            y += speedY;
+            if (y > canvas.height - height) {
+              speedY *= -1;
+            } else if (y < 0) {
+              speedY *= -1;
+            }
+            ctx.fillRect(x, y, width, height);
+          }, 10);
+        }
+      }
+    </script>
+  </body>
+</html>
