@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body,
+      html {
+        /* text-align: center;
+        padding-top: 20px; */
+        margin: 0;
+      }
+      canvas {
+        /* box-shadow: 0 0 10px #333;
+        margin: 0 auto; */
+        position: absolute;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body onload="draw()">
+    <img src="https://img.8b5.cn/2019/06/27/5d14dcd62d68e.jpg" alt="" />
+    <canvas id="canvas" width="800" height="800"> 浏览器不支持Canvas </canvas>
+    <script>
+      function draw() {
+        var canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+
+          ctx.beginPath();
+          ctx.fillStyle = "gray";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          ctx.globalCompositeOperation = "destination-out";
+          ctx.lineWidth = 50;
+          ctx.lineCap = "round";
+
+          canvas.onmousedown = function (e) {
+            var ev = e || window.event;
+            var x = ev.clientX;
+            var y = ev.clientY;
+
+            ctx.moveTo(x, y);
+            canvas.onmousemove = function (e) {
+              var ev = e || window.event;
+              var x = ev.clientX;
+              var y = ev.clientY;
+              ctx.lineTo(x, y);
+              ctx.stroke();
+            };
+
+            canvas.onmouseup = function () {
+              canvas.onmousemove = "";
+            };
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body,
+      html {
+        text-align: center;
+        padding-top: 20px;
+        margin: 0;
+      }
+      canvas {
+        box-shadow: 0 0 40px #333;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body onload="draw()">
+    <canvas id="canvas1" width="400" height="300"> 浏览器不支持Canvas </canvas>
+    <canvas id="canvas2" width="400" height="300"> 浏览器不支持Canvas </canvas>
+    <canvas id="canvas3" width="400" height="300"> 浏览器不支持Canvas </canvas>
+    <canvas id="canvas4" width="400" height="300"> 浏览器不支持Canvas </canvas>
+    <script>
+      function draw() {
+        var canvas1 = document.getElementById("canvas1");
+        var canvas2 = document.getElementById("canvas2");
+        var canvas3 = document.getElementById("canvas3");
+        var canvas4 = document.getElementById("canvas4");
+        if (canvas1.getContext) {
+          // 图像混合1
+          var ctx1 = canvas1.getContext("2d");
+          ctx1.beginPath();
+          ctx1.fillStyle = "red";
+          ctx1.fillRect(50, 50, 100, 100);
+          ctx1.globalCompositeOperation = "source-over";
+          ctx1.fillStyle = "green";
+          ctx1.arc(150, 150, 50, 0, Math.PI * 2);
+          ctx1.fill();
+
+          // 图像混合2
+          var ctx2 = canvas2.getContext("2d");
+          ctx2.beginPath();
+          ctx2.fillStyle = "red";
+          ctx2.fillRect(50, 50, 100, 100);
+          ctx2.globalCompositeOperation = "destination-atop";
+          ctx2.fillStyle = "green";
+          ctx2.arc(150, 150, 50, 0, Math.PI * 2);
+          ctx2.fill();
+
+          // 图像混合3
+          var ctx3 = canvas3.getContext("2d");
+          ctx3.beginPath();
+          ctx3.fillStyle = "red";
+          ctx3.fillRect(50, 50, 100, 100);
+          ctx3.globalCompositeOperation = "source-in";
+          ctx3.fillStyle = "green";
+          ctx3.arc(150, 150, 50, 0, Math.PI * 2);
+          ctx3.fill();
+
+          // 图像混合4
+          var ctx4 = canvas4.getContext("2d");
+          ctx4.beginPath();
+          ctx4.fillStyle = "red";
+          ctx4.fillRect(50, 50, 100, 100);
+          ctx4.globalCompositeOperation = "source-out";
+          ctx4.fillStyle = "green";
+          ctx4.arc(150, 150, 50, 0, Math.PI * 2);
+          ctx4.fill();
+        }
+      }
+    </script>
+  </body>
+</html>
