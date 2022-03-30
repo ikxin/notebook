@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+        padding-top: 20px;
+      }
+      canvas {
+        box-shadow: 0 0 10px #333;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body onload="draw()">
+    <canvas id="canvas" width="512" height="768"> 浏览器不支持Canvas </canvas>
+    <script>
+      function draw() {
+        var canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+
+          var y = 0;
+          function backgroundMove() {
+            // 记录状态
+            ctx.save();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.translate(0, y);
+            ctx.drawImage(bgImage, 0, 0);
+            ctx.drawImage(bgImage, 0, canvas.height * -1);
+            // 判断x的偏移量
+            y++;
+            if (y >= canvas.height) {
+              y = 0;
+            }
+            ctx.restore();
+            window.requestAnimationFrame(backgroundMove);
+          }
+          var bgImage = new Image();
+          bgImage.src = "https://img.8b5.cn/2022/03/30/6243b82a39da3.png";
+          bgImage.onload = function () {
+            backgroundMove();
+          };
+        }
+      }
+    </script>
+  </body>
+</html>
