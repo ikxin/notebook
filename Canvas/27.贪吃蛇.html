@@ -39,6 +39,8 @@
            *    5.1 碰撞检测
            *    5.2 游戏结束
            * */
+          var isEatFood = false;
+
           function Rect(x, y, width, height, color) {
             this.x = x;
             this.y = y;
@@ -82,6 +84,7 @@
               this.body.push(rect);
               x -= 40;
             }
+            this.direction = 1;
           }
 
           Snake.prototype.snakeDraw = function () {
@@ -93,8 +96,74 @@
             }
           };
 
+          Snake.prototype.move = function () {
+            // 加头
+            var rect = new Rect(
+              this.head.x,
+              this.head.y,
+              this.head.width,
+              this.head.height,
+              "gray"
+            );
+            this.body.splice(0, 0, rect);
+            // 去尾
+            if (isEatFood == false) {
+              this.body.pop();
+            } else {
+              isEatFood = false;
+            }
+            switch (this.direction) {
+              case 0: {
+                this.head.x -= this.head.width; // 向左
+                break;
+              }
+              case 1: {
+                this.head.y -= this.head.height; // 向上
+                break;
+              }
+              case 2: {
+                this.head.x += this.head.width; // 向右
+                break;
+              }
+              case 3: {
+                this.head.y += this.head.height; // 向下
+                break;
+              }
+            }
+          };
+
           var snake = new Snake();
           snake.snakeDraw();
+
+          function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            snake.move();
+            snake.snakeDraw();
+          }
+
+          setInterval(animate, 200);
+
+          document.onkeydown = function (event) {
+            var event = event || window.event;
+            switch (event.keyCode) {
+              case 37: {
+                snake.direction = 0; // 向左
+                break;
+              }
+              case 38: {
+                snake.direction = 1; // 向上
+                break;
+              }
+              case 39: {
+                snake.direction = 2; // 向右
+                break;
+              }
+              case 40: {
+                snake.direction = 3; // 向下
+                break;
+              }
+            }
+          };
         }
       }
     </script>
