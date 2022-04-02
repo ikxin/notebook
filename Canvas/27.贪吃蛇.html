@@ -65,9 +65,9 @@
           // );
           // rect.draw();
 
-          // 创建snake对象
+          // 创建Snake对象
           function Snake() {
-            // 画蛇头
+            // 蛇头
             this.head = new Rect(
               canvas.width / 2 - 40,
               canvas.height / 2 - 20,
@@ -75,7 +75,7 @@
               40,
               "red"
             );
-            // 画蛇身
+            // 蛇身
             this.body = new Array();
             var x = this.head.x - 40;
             var y = this.head.y;
@@ -135,10 +135,17 @@
           var snake = new Snake();
           snake.snakeDraw();
 
+          var food = randForFood();
+
           function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            food.rectDraw();
             snake.move();
             snake.snakeDraw();
+            if (isRectHit(snake.head, food)) {
+              isEatFood = true;
+              food = randForFood();
+            }
           }
 
           setInterval(animate, 200);
@@ -164,6 +171,59 @@
               }
             }
           };
+
+          function randForFood() {
+            var isInSnake = true;
+            while (isInSnake) {
+              var x = getRandInRange(0, (canvas.width - 40) / 40) * 40;
+              var y = getRandInRange(0, (canvas.height - 40) / 40) * 40;
+              // 食物矩形
+              var rect = new Rect(x, y, 40, 40, "blue");
+              // 判断食物和蛇头是否重叠
+              if (isRectHit(snake.head, rect)) {
+                isInSnake = true;
+                continue;
+              }
+              isInSnake = false;
+              for (var i = 0; i < snake.body.length; i++) {
+                if (isRectHit(snake.body[i], rect)) {
+                  isInSnake = true;
+                  break;
+                }
+              }
+            }
+            return rect;
+          }
+
+          function isRectHit(rect1, rect2) {
+            var minX1 = rect1.x;
+            var minX2 = rect2.x;
+            var minY1 = rect1.y;
+            var minY2 = rect2.y;
+
+            var maxX1 = rect1.x + rect1.width;
+            var maxX2 = rect2.x + rect2.width;
+            var maxY1 = rect1.y + rect1.height;
+            var maxY2 = rect2.y + rect2.height;
+
+            // 判断矩形相交的最大/最小值
+
+            var minX = Math.max(minX1, minX2);
+            var minY = Math.max(minY1, minY2);
+            var maxX = Math.min(maxX1, maxX2);
+            var maxY = Math.min(maxY1, maxY2);
+
+            if (minX < maxX && minY < maxY) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+
+          // 获取随机数
+          function getRandInRange(min, max) {
+            return Math.round(Math.random() * (max - min) + min);
+          }
         }
       }
     </script>
