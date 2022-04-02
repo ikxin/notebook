@@ -30,7 +30,13 @@
         function moveBackground(bgImage) {
           var bgSound = new Audio("./music/game_music.mp3")
           bgSound.loop = true
-          bgSound.play()
+          // bgSound.play()
+
+          setInterval(function () {
+            // 执行速度
+            var speed = 5
+            animateBackground(bgCanvas, bgImage, speed)
+          }, 30)
         }
       }
     }
