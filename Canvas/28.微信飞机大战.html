@@ -48,11 +48,18 @@
 
           // 主角出场
           var heroCanvas = document.getElementById('heroCanvas')
+          var content = heroCanvas.getContext('2d')
           var img = './images/herofly.gif'
           var hero = createHero(98, 122, heroCanvas, img, heroLoader)
           function heroLoader(image) {
             hero.draw(heroCanvas)
           }
+
+          // 飞机动起来
+          setInterval(function () {
+            content.clearRect(0, 0, heroCanvas.width, heroCanvas.height)
+            hero.draw(heroCanvas)
+          }, 30)
         }
       }
     }
