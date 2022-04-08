@@ -28,7 +28,7 @@ Bullet.prototype.move = function () {
 }
 
 Bullet.prototype.isOutOfScreen = function () {
-    if (this.y < this.h) {
+    if (this.y < -this.h) {
         return true
     } else {
         return false
