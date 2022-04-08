@@ -14,12 +14,20 @@
     canvas {
       box-shadow: 0 0 10px #333;
     }
+
+    #heroCanvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
   </style>
 </head>
 
 <body onload="drawAirplane()">
   <canvas id="bgCanvas" width="320" height="568"></canvas>
+  <canvas id="heroCanvas" width="320" height="568"></canvas>
   <script src="./js/background.js"></script>
+  <script src="./js/hero.js"></script>
   <script>
     function drawAirplane() {
       var bgCanvas = document.getElementById("bgCanvas")
@@ -37,6 +45,14 @@
             var speed = 5
             animateBackground(bgCanvas, bgImage, speed)
           }, 30)
+
+          // 主角出场
+          var heroCanvas = document.getElementById('heroCanvas')
+          var img = './images/herofly.gif'
+          var hero = createHero(98, 122, heroCanvas, img, heroLoader)
+          function heroLoader(image) {
+            hero.draw(heroCanvas)
+          }
         }
       }
     }
