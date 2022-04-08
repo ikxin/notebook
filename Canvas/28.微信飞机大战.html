@@ -75,8 +75,20 @@
           setInterval(function () {
             var bullet = createBullet(bWidth, bHeight, bUrl, hero)
             bulletArray.push(bullet)
-            bullet.draw(bCanvas)
-          }, 200)
+            // console.log(bulletArray.length)
+          }, 100)
+
+          setInterval(function () {
+            bContent.clearRect(0, 0, 320, 568)
+            for (var i = 0; i < bulletArray.length; i++) {
+              // 判断子弹是否出屏
+              if (bulletArray[i].isOutOfScreen()) {
+                bulletArray.splice(i, 1)
+              }
+              bulletArray[i].move()
+              bulletArray[i].draw(bCanvas)
+            }
+          }, 20)
         }
       }
     }

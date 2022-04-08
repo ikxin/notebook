@@ -22,3 +22,15 @@ Bullet.prototype.draw = function (canvas) {
     var context = canvas.getContext('2d')
     context.drawImage(this.image, this.x, this.y, this.w / 2, this.h / 2)
 }
+
+Bullet.prototype.move = function () {
+    this.y -= 10
+}
+
+Bullet.prototype.isOutOfScreen = function () {
+    if (this.y < this.h) {
+        return true
+    } else {
+        return false
+    }
+}
