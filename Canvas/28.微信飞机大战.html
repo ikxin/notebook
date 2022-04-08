@@ -15,7 +15,8 @@
       box-shadow: 0 0 10px #333;
     }
 
-    #heroCanvas {
+    #heroCanvas,
+    #bulletCanvas {
       position: absolute;
       left: 0;
       top: 0;
@@ -26,8 +27,10 @@
 <body onload="drawAirplane()">
   <canvas id="bgCanvas" width="320" height="568"></canvas>
   <canvas id="heroCanvas" width="320" height="568"></canvas>
+  <canvas id="bulletCanvas" width="320" height="568"></canvas>
   <script src="./js/background.js"></script>
   <script src="./js/hero.js"></script>
+  <script src="./js/bullet.js"></script>
   <script>
     function drawAirplane() {
       var bgCanvas = document.getElementById("bgCanvas")
@@ -60,6 +63,20 @@
             content.clearRect(0, 0, heroCanvas.width, heroCanvas.height)
             hero.draw(heroCanvas)
           }, 30)
+
+          // 让子弹飞
+          var bCanvas = document.getElementById('bulletCanvas')
+          var bContent = bCanvas.getContext('2d')
+          var bWidth = 9
+          var bHeight = 21
+          var bUrl = './images/bullet.png'
+          var bulletArray = new Array()
+
+          setInterval(function () {
+            var bullet = createBullet(bWidth, bHeight, bUrl, hero)
+            bulletArray.push(bullet)
+            bullet.draw(bCanvas)
+          }, 200)
         }
       }
     }
