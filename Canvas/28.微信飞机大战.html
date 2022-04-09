@@ -54,7 +54,7 @@
 
           // 主角出场
           var heroCanvas = document.getElementById('heroCanvas')
-          var content = heroCanvas.getContext('2d')
+          var context = heroCanvas.getContext('2d')
           var img = './images/herofly.gif'
           var hero = createHero(98, 122, heroCanvas, img, heroLoader)
           function heroLoader(image) {
@@ -63,13 +63,13 @@
 
           // 飞机动起来
           setInterval(function () {
-            content.clearRect(0, 0, heroCanvas.width, heroCanvas.height)
+            context.clearRect(0, 0, heroCanvas.width, heroCanvas.height)
             hero.draw(heroCanvas)
           }, 30)
 
           // 让子弹飞
           var bCanvas = document.getElementById('bulletCanvas')
-          var bContent = bCanvas.getContext('2d')
+          var bContext = bCanvas.getContext('2d')
           var bWidth = 9
           var bHeight = 21
           var bUrl = './images/bullet.png'
@@ -82,7 +82,7 @@
           }, 100)
 
           setInterval(function () {
-            bContent.clearRect(0, 0, 320, 568)
+            bContext.clearRect(0, 0, 320, 568)
             for (var i = 0; i < bulletArray.length; i++) {
               // 判断子弹是否出屏
               if (bulletArray[i].isOutOfScreen()) {
@@ -95,7 +95,7 @@
 
           // 创建敌机
           var eCanvas = document.getElementById('enemyCanvas')
-          var eContent = eCanvas.getContext('2d')
+          var eContext = eCanvas.getContext('2d')
           var enemyArray = new Array()
           setInterval(function () {
             var number = getRandForNum(1, 3)
@@ -112,7 +112,28 @@
                 break
             }
             enemyArray.push(enemy)
+            console.log(enemyArray.length)
           }, 1000)
+
+          // 敌机出现
+          var eTimer = setInterval(function () {
+            eContext.clearRect(0, 0, eCanvas.width, eCanvas.height)
+            for (var i = 0; i < enemyArray.length; i++) {
+              enemyArray[i].move()
+              enemyArray[i].draw(eCanvas)
+
+              // 碰撞检测
+              if (isEnemyHitHero(enemyArray[i], hero)) {
+                clearInterval(eTimer)
+                eTimer = null
+                alert('游戏结束')
+              }
+              // 判断敌机是否出屏
+              if (enemyArray[i].isOutOfScreen(eCanvas)) {
+                enemyArray.splice(i, 1)
+              }
+            }
+          }, 50)
         }
       }
     }
