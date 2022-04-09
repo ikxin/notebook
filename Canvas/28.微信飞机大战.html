@@ -78,7 +78,6 @@
           setInterval(function () {
             var bullet = createBullet(bWidth, bHeight, bUrl, hero)
             bulletArray.push(bullet)
-            // console.log(bulletArray.length)
           }, 100)
 
           setInterval(function () {
@@ -90,6 +89,14 @@
               }
               bulletArray[i].move()
               bulletArray[i].draw(bCanvas)
+
+              // 循环敌机
+              for (var j = 0; j < enemyArray.length; j++) {
+                if (isEnemyHitBullet(enemyArray[j], bulletArray[i])) {
+                  enemyArray.splice(j, 1)
+                  bulletArray.splice(i, 1)
+                }
+              }
             }
           }, 20)
 
@@ -112,7 +119,6 @@
                 break
             }
             enemyArray.push(enemy)
-            console.log(enemyArray.length)
           }, 1000)
 
           // 敌机出现
