@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        姓：<input type="text" v-model="firstName"><br><br>
+        名：<input type="text" v-model="lastName"><br><br>
+        全名：<span>{{fullName}}</span>
+    </div>
+    <script>
+        // 阻止 vue 在启动时生成生产提示
+        Vue.config.productionTip = false
+
+        // 创建Vue实例
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                firstName: '一纸',
+                lastName: '忘忧',
+                fullName: '一纸 / 忘忧'
+            },
+            computed: {
+                // 简单写法
+                // fullName() {
+                //     console.log('get被调用了')
+                //     return this.firstName + ' / ' + this.lastName
+                // }
+            },
+            watch: {
+                firstName(val) {
+                    this.fullName = val + ' / ' + this.lastName
+                },
+                lastName(val) {
+                    this.fullName = this.firstName + ' / ' + val
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
