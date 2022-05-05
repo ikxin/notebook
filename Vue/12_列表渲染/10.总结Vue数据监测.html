@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<!-- 准备好一个容器 -->
+<div id="root">
+    <button @click="student.age++">年龄+1</button>
+    <button @click="addSex">添加性别</button>
+    <button @click.once="addFriend">添加朋友</button>
+    <button @click="updateFriend">修改朋友</button>
+    <button @click.once="addHobby">添加爱好</button>
+    <button @click="updateHobby">修改爱好</button>
+
+    <h2>名称：{{student.name}}</h2>
+    <h2 v-if="student.sex">性别：{{student.sex}}</h2>
+    <h2>年龄：{{student.age}}</h2>
+    <h2>爱好：</h2>
+    <ul>
+        <li v-for="(hobby, index) in student.hobbys" :key="index">
+            {{hobby}}
+        </li>
+    </ul>
+    <h2>朋友：</h2>
+    <ul>
+        <li v-for="(friend, index) in student.friends" :key="index">
+            {{friend.name}} / {{friend.age}}
+        </li>
+    </ul>
+</div>
+<script>
+    // 阻止 vue 在启动时生成生产提示
+    Vue.config.productionTip = false
+
+    // 创建Vue实例
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            student: {
+                name: 'tom',
+                age: 18,
+                hobbys: ['吃饭', '睡觉', '学习'],
+                friends: [
+                    {name: 'jerry', age: '20'},
+                    {name: 'tony', age: '18'}
+                ]
+            }
+        },
+        methods: {
+            addSex() {
+                Vue.set(this.student, 'sex', '男')
+                // this.$set(this.student, 'sex', '男')
+            },
+            addFriend() {
+                this.student.friends.unshift({name: 'jack', age: 24})
+            },
+            updateFriend() {
+                this.student.friends[0].name = '张三'
+            },
+            addHobby() {
+                this.student.hobbys.push('打架')
+            },
+            updateHobby() {
+                this.student.hobbys.splice(0, 1, '开车')
+            }
+        }
+    })
+</script>
+</body>
+
+</html>
