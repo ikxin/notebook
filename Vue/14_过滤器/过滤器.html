@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+</head>
+
+<body>
+<!-- 准备好一个容器 -->
+<div id="root">
+    <h2>显示格式化时间</h2>
+    <div :x="msg | slice">时间戳：{{time}}</div>
+    <!--  计算属性实现  -->
+    <div>格式化：{{formatTime}}</div>
+    <!--  methods实现  -->
+    <div>格式化：{{getFormatTime()}}</div>
+    <!--  过滤器实现1  -->
+    <div>格式化：{{time | timeFormater}}</div>
+    <!--  过滤器实现2  -->
+    <div>格式化：{{time | timeFormater('YYYY-MM-DD')}}</div>
+    <!--  过滤器实现3  -->
+    <div>格式化：{{time | timeFormater('YYYY-MM-DD') | slice}}</div>
+</div>
+<div id="test">
+    <h2>{{msg | slice}}</h2>
+</div>
+<script>
+    // 阻止 vue 在启动时生成生产提示
+    Vue.config.productionTip = false
+
+    // 全局过滤器
+    Vue.filter('slice', function (value) {
+        return value.slice(0, 4)
+    })
+
+    // 创建Vue实例
+    new Vue({
+        el: '#root',
+        data: {
+            msg: '这是测试内容'
+        },
+        computed: {
+            time() {
+                return Date.now()
+            },
+            formatTime() {
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+            }
+        },
+        methods: {
+            getFormatTime() {
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+            }
+        },
+        // 局部过滤器
+        filters: {
+            timeFormater(value, format = 'YYYY-MM-DD HH:mm:ss') {
+                return dayjs(value).format(format)
+            },
+            // slice(value) {
+            //     return value.slice(0, 4)
+            // }
+        }
+    })
+
+    new Vue({
+        el: '#test',
+        data: {
+            msg: 'Hello World'
+        }
+    })
+</script>
+</body>
+
+</html>
