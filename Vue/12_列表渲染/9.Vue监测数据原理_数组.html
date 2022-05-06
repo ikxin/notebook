@@ -10,51 +10,51 @@
 </head>
 
 <body>
-<!-- 准备好一个容器 -->
-<div id="root">
-    <h2>{{hello}} {{world}}</h2>
-    <hr>
-    <h2>名称：{{student.name}}</h2>
-    <h2 v-if="student.sex">性别：{{student.sex}}</h2>
-    <h2>年龄：{{student.age.rAge}} / {{student.age.sAge}}</h2>
-    <h2>爱好：</h2>
-    <ul>
-        <li v-for="(hobby, index) in student.hobbys" :key="index">
-            {{hobby}}
-        </li>
-    </ul>
-    <h2>朋友：</h2>
-    <ul>
-        <li v-for="(friend, index) in student.friends" :key="index">
-            {{friend.name}} / {{friend.age}}
-        </li>
-    </ul>
-</div>
-<script>
-    // 阻止 vue 在启动时生成生产提示
-    Vue.config.productionTip = false
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h2>{{hello}} {{world}}</h2>
+        <hr>
+        <h2>名称：{{student.name}}</h2>
+        <h2 v-if="student.sex">性别：{{student.sex}}</h2>
+        <h2>年龄：{{student.age.rAge}} / {{student.age.sAge}}</h2>
+        <h2>爱好：</h2>
+        <ul>
+            <li v-for="(hobby, index) in student.hobbys" :key="index">
+                {{hobby}}
+            </li>
+        </ul>
+        <h2>朋友：</h2>
+        <ul>
+            <li v-for="(friend, index) in student.friends" :key="index">
+                {{friend.name}} / {{friend.age}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        // 阻止 vue 在启动时生成生产提示
+        Vue.config.productionTip = false
 
-    // 创建Vue实例
-    const vm = new Vue({
-        el: '#root',
-        data: {
-            hello: 'Hello',
-            world: 'World',
-            student: {
-                name: 'tom',
-                age: {
-                    rAge: 20,
-                    sAge: 18
-                },
-                hobbys: ['吃饭', '睡觉', '学习'],
-                friends: [
-                    {name: 'jerry', age: '20'},
-                    {name: 'tony', age: '18'}
-                ]
+        // 创建Vue实例
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                hello: 'Hello',
+                world: 'World',
+                student: {
+                    name: 'tom',
+                    age: {
+                        rAge: 20,
+                        sAge: 18
+                    },
+                    hobbys: ['吃饭', '睡觉', '学习'],
+                    friends: [
+                        { name: 'jerry', age: '20' },
+                        { name: 'tony', age: '18' }
+                    ]
+                }
             }
-        }
-    })
-</script>
+        })
+    </script>
 </body>
 
 </html>

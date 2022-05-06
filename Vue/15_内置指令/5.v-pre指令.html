@@ -10,25 +10,25 @@
 </head>
 
 <body>
-<!-- 准备好一个容器 -->
-<div id="root">
-    <!--  跳过其所在节点的编译过程  -->
-    <div v-pre>Vue其实很简单</div>
-    <div>num的当前值是：{{num}}</div>
-    <button @click="num++">点我n+1</button>
-</div>
-<script>
-    // 阻止 vue 在启动时生成生产提示
-    Vue.config.productionTip = false
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <!--  跳过其所在节点的编译过程  -->
+        <div v-pre>Vue其实很简单</div>
+        <div>num的当前值是：{{num}}</div>
+        <button @click="num++">点我n+1</button>
+    </div>
+    <script>
+        // 阻止 vue 在启动时生成生产提示
+        Vue.config.productionTip = false
 
-    // 创建Vue实例
-    new Vue({
-        el: '#root',
-        data: {
-            num: 1
-        }
-    })
-</script>
+        // 创建Vue实例
+        new Vue({
+            el: '#root',
+            data: {
+                num: 1
+            }
+        })
+    </script>
 </body>
 
 </html>

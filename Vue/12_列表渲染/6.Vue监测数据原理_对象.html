@@ -10,23 +10,23 @@
 </head>
 
 <body>
-<!-- 准备好一个容器 -->
-<div id="root">
-    <h2>{{hello}} {{world}}</h2>
-</div>
-<script>
-    // 阻止 vue 在启动时生成生产提示
-    Vue.config.productionTip = false
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h2>{{hello}} {{world}}</h2>
+    </div>
+    <script>
+        // 阻止 vue 在启动时生成生产提示
+        Vue.config.productionTip = false
 
-    // 创建Vue实例
-    const vm = new Vue({
-        el: '#root',
-        data: {
-            hello: 'Hello',
-            world: 'World'
-        }
-    })
-</script>
+        // 创建Vue实例
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                hello: 'Hello',
+                world: 'World'
+            }
+        })
+    </script>
 </body>
 
 </html>
