@@ -1,20 +1,12 @@
 <template>
-  <div>
-    <img src="./assets/logo.png" />
-    <School />
-    <Student />
-  </div>
+  <div></div>
 </template>
 
 <script>
-import School from "./components/School.vue";
-import Student from "./components/Student.vue";
-
 export default {
   name: "App",
-  components: {
-    School,
-    Student,
-  },
+  data() {},
+  components: {},
+  methods: {},
 };
 </script>
