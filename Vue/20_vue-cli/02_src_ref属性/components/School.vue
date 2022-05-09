@@ -7,12 +7,12 @@
 
 <script>
 export default {
-  name: "School",
-  data() {
+  name: 'SchoolInfo',
+  data () {
     return {
-      name: "清华大学",
-      address: "中国北京",
-    };
-  },
-};
+      name: '清华大学',
+      address: '中国北京'
+    }
+  }
+}
 </script>

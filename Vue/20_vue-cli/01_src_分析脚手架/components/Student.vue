@@ -9,14 +9,14 @@
 <script>
 // 组件的交互代码
 export default {
-  name: "Student",
-  data() {
+  name: 'StudentInfo',
+  data () {
     return {
-      name: "张三",
-      age: 18,
-    };
-  },
-};
+      name: '张三',
+      age: 18
+    }
+  }
+}
 </script>
 
 <style>
