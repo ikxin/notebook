@@ -9,15 +9,7 @@ import TodoItem from './TodoItem.vue'
 export default {
   name: 'TodoList',
   components: { TodoItem },
-  data () {
-    return {
-      todos: [
-        { id: '001', title: '吃饭', done: true },
-        { id: '002', title: '洗澡', done: true },
-        { id: '003', title: '睡觉', done: false }
-      ]
-    }
-  }
+  props: ['todos']
 }
 </script>
 

@@ -2,8 +2,8 @@
   <div id="root">
     <div class="todo-container">
       <div class="todo-wrap">
-        <TodoAdd />
-        <TodoList />
+        <TodoAdd :addTodo="addTodo" />
+        <TodoList :todos="todos" />
         <TodoCount />
       </div>
     </div>
@@ -16,7 +16,21 @@ import TodoList from './components/TodoList.vue'
 import TodoCount from './components/TodoCount.vue'
 export default {
   name: 'App',
-  components: { TodoAdd, TodoList, TodoCount }
+  components: { TodoAdd, TodoList, TodoCount },
+  data () {
+    return {
+      todos: [
+        { id: '001', title: '吃饭', done: true },
+        { id: '002', title: '洗澡', done: true },
+        { id: '003', title: '睡觉', done: false }
+      ]
+    }
+  },
+  methods: {
+    addTodo (todo) {
+      this.todos.unshift(todo)
+    }
+  }
 }
 </script>
 
