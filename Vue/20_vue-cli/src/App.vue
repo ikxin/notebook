@@ -3,7 +3,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <TodoAdd :addTodo="addTodo" />
-        <TodoList :todos="todos" />
+        <TodoList :todos="todos" :checkTodo="checkTodo" />
         <TodoCount />
       </div>
     </div>
@@ -29,6 +29,13 @@ export default {
   methods: {
     addTodo (todo) {
       this.todos.unshift(todo)
+    },
+    checkTodo (id) {
+      this.todos.forEach((todo) => {
+        if (todo.id === id) {
+          todo.done = !todo.done
+        }
+      })
     }
   }
 }
