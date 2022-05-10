@@ -1,9 +1,6 @@
 <template>
   <ul class="todo-main">
-    <TodoItem />
-    <TodoItem />
-    <TodoItem />
-    <TodoItem />
+    <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" />
   </ul>
 </template>
 
@@ -11,7 +8,16 @@
 import TodoItem from './TodoItem.vue'
 export default {
   name: 'TodoList',
-  components: { TodoItem }
+  components: { TodoItem },
+  data () {
+    return {
+      todos: [
+        { id: '001', title: '吃饭', done: true },
+        { id: '002', title: '洗澡', done: true },
+        { id: '003', title: '睡觉', done: false }
+      ]
+    }
+  }
 }
 </script>
 
