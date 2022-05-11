@@ -3,7 +3,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <TodoAdd :addTodo="addTodo" />
-        <TodoList :todos="todos" :checkTodo="checkTodo" />
+        <TodoList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo" />
         <TodoCount />
       </div>
     </div>
@@ -35,6 +35,11 @@ export default {
         if (todo.id === id) {
           todo.done = !todo.done
         }
+      })
+    },
+    deleteTodo (id) {
+      this.todos = this.todos.filter((todo) => {
+        return todo.id !== id
       })
     }
   }
@@ -79,6 +84,7 @@ body {
   width: 600px;
   margin: 0 auto;
 }
+
 .todo-container .todo-wrap {
   padding: 10px;
   border: 1px solid #ddd;

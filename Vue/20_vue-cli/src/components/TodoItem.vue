@@ -1,15 +1,11 @@
 <template>
   <li>
     <label>
-      <input
-        type="checkbox"
-        :checked="todo.done"
-        @change="handleCheck(todo.id)"
-      />
+      <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)" />
       <!-- <input type="checkbox" v-model="todo.done" /> -->
       <span>{{ todo.title }}</span>
     </label>
-    <button class="btn btn-danger" style="display: none">删除</button>
+    <button class="btn btn-danger" @click="handleDelete(todo.id)">删除</button>
   </li>
 </template>
 
@@ -17,10 +13,15 @@
 export default {
   name: 'TodoItem',
   // 声明接收todo对象
-  props: ['todo', 'checkTodo'],
+  props: ['todo', 'checkTodo', 'deleteTodo'],
   methods: {
     handleCheck (id) {
       this.checkTodo(id)
+    },
+    handleDelete (id) {
+      if (confirm('确定删除吗？')) {
+        this.deleteTodo(id)
+      }
     }
   }
 }
@@ -59,5 +60,13 @@ li:before {
 
 li:last-child {
   border-bottom: none;
+}
+
+li:hover {
+  background-color: #ddd;
+}
+
+li:hover button {
+  display: block;
 }
 </style>
