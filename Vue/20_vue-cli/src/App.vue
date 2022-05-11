@@ -3,8 +3,12 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <TodoAdd :addTodo="addTodo" />
-        <TodoList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo" />
-        <TodoCount />
+        <TodoList
+          :todos="todos"
+          :checkTodo="checkTodo"
+          :deleteTodo="deleteTodo"
+        />
+        <TodoCount :todos="todos" />
       </div>
     </div>
   </div>
