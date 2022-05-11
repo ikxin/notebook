@@ -27,11 +27,7 @@ export default {
   components: { TodoAdd, TodoList, TodoCount },
   data () {
     return {
-      todos: [
-        { id: '001', title: '吃饭', done: true },
-        { id: '002', title: '洗澡', done: true },
-        { id: '003', title: '睡觉', done: false }
-      ]
+      todos: JSON.parse(localStorage.getItem('todos')) || []
     }
   },
   methods: {
@@ -59,6 +55,17 @@ export default {
       this.todos = this.todos.filter((todo) => {
         return !todo.done
       })
+    }
+  },
+  watch: {
+    // todos (value) {
+    //   localStorage.setItem('todos', JSON.stringify(value))
+    // }
+    todos: {
+      deep: true,
+      handler (value) {
+        localStorage.setItem('todos', JSON.stringify(value))
+      }
     }
   }
 }
