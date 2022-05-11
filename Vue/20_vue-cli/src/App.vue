@@ -8,7 +8,11 @@
           :checkTodo="checkTodo"
           :deleteTodo="deleteTodo"
         />
-        <TodoCount :todos="todos" />
+        <TodoCount
+          :todos="todos"
+          :checkAllTodo="checkAllTodo"
+          :clearAllTodo="clearAllTodo"
+        />
       </div>
     </div>
   </div>
@@ -44,6 +48,16 @@ export default {
     deleteTodo (id) {
       this.todos = this.todos.filter((todo) => {
         return todo.id !== id
+      })
+    },
+    checkAllTodo (done) {
+      this.todos.forEach((todo) => {
+        todo.done = done
+      })
+    },
+    clearAllTodo () {
+      this.todos = this.todos.filter((todo) => {
+        return !todo.done
       })
     }
   }
