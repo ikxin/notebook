@@ -1,9 +1,10 @@
 <template>
   <div>
     <button @click="isShow = !isShow">显示/隐藏</button>
-    <transition name="hello" appear>
-      <h2 v-show="isShow">Hello World</h2>
-    </transition>
+    <transition-group name="hello" appear>
+      <h2 v-show="isShow" key="1">Hello World</h2>
+      <h2 v-show="isShow" key="2">Hello World</h2>
+    </transition-group>
   </div>
 </template>
 
