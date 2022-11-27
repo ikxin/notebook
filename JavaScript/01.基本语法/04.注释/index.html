@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 这是单行注释
+
+      /*
+        这是
+        多行
+        注释
+      */
+
+      // 历史上 JavaScript 可以兼容 HTML 代码的注释
+      // 所以 <!-- 和 --> 也被视为合法的单行注释
+      x = 1; <!-- x = 2;
+      --> x = 3;
+      // 上面代码中，只有x = 1会执行，其他的部分都被注释掉了
+      // --> 只有在行首，才会被当成单行注释，否则会当作正常的运算
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // isNaN 方法可以用来判断一个值是否为 NaN
+      isNaN(NaN); // true
+      isNaN(123); // false
+
+      // isNaN 只对数值有效，如果传入其他值，会被先转成数值
+      // isNaN 为 true 的值，有可能不是 NaN，而是一个字符串
+      isNaN("Hello"); // true
+      // 等同
+      isNaN(Number("Hello")); // true
+
+      // 出于同样的原因，对于对象和数组，isNaN 也返回 true
+      isNaN({}); // true
+      // 等同
+      isNaN(Number({})); // true
+
+      isNaN(["xzy"]); // true
+      // 等同
+      isNaN(Number(["xzy"])); // true
+
+      // 但是对于空数组和只有一个数值成员的数组，isNaN返回false
+      isNaN([]); // false
+      isNaN([123]); // false
+      isNaN(["123"]); // false
+
+      // 因此使用 isNaN 之前，最好判断一下数据类型
+      function myIsNaN(value) {
+        return typeof value === "number" && isNaN(value);
+      }
+
+      // 判断 NaN 更可靠的方法是，利用 NaN 为唯一不等于自身的值的这个特点进行判断
+      function myIsNaN(value) {
+        return value !== value;
+      }
+    </script>
+  </body>
+</html>

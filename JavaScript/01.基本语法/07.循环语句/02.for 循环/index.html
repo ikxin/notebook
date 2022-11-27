@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // for 语句是循环命令的另一种形式，可以指定循环的起点、终点和终止条件
+      /*
+        for (初始化表达式; 条件; 递增表达式)
+          语句;
+
+        for (初始化表达式; 条件; 递增表达式) {
+          语句;
+        }
+      */
+
+      // for 语句后面的括号里面，有三个表达式
+      // 初始化表达式（initialize）：确定循环变量的初始值，只在循环开始时执行一次
+      // 条件表达式（test）：每轮循环开始时，都要执行这个条件表达式，只有值为真，才继续进行循环
+      // 递增表达式（increment）：每轮循环的最后一个操作，通常用来递增循环变量
+      var x = 3;
+      for (var i = 0; i < x; i++) {
+        console.log(i);
+      }
+
+      // for 语句的三个部分（initialize、test、increment），可以省略任何一个，也可以全部省略
+      // for (;;) {
+      //   console.log("Hello World");
+      // }
+      // 上面代码省略了 for 语句表达式的三个部分，结果就导致了一个无限循环
+    </script>
+  </body>
+</html>

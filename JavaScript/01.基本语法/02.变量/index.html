@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 声明并赋值
+      var a = 1;
+
+      // var 不写也能声明，但不建议，容易创建全局变量
+      b = 2;
+
+      // 如果变量没声明就直接使用会报错
+      // c; // ReferenceError: x is not defined
+
+      // 可以在同一条 var 命令中声明多个变量
+      var d, e;
+
+      // 变量类型没有限制，可以随时改变类型
+      var f = 1;
+      f = "hello";
+
+      // 如果使用var重新声明一个已经存在的变量，是无效的
+      var g = 1;
+      var g;
+      g; // 1
+
+      // 但如果第二次声明的时候还进行了赋值，则会覆盖掉前面的值
+      var h = 1;
+      var h = 2;
+      h; // 2
+
+      // 变量提升
+      console.log(i); // undefined
+      var i = 1;
+    </script>
+  </body>
+</html>

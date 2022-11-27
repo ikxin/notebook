@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // JavaScript 有三种方法，可以确定一个值到底是什么类型
+      /*
+        typeof 运算符
+        instanceof 运算符
+        Object.prototype.toString 方法
+      */
+
+      // typeof 运算符可以返回一个值的数据类型
+      // 数值、字符串、布尔值分别返回 number、string、boolean，函数返回 function
+      console.log(typeof 123); // "number"
+      console.log(typeof "123"); // "string"
+      console.log(typeof false); // "boolean"
+      console.log(typeof function f() {}); // "function"
+
+      // undefined 返回 undefined
+      // 利用这一点，typeof 可以用来检查一个没有声明的变量，而不报错
+      // 实际编程中，这个特点通常用在判断语句
+      console.log(typeof unde);
+      // 错误的写法
+      // if (unde) {} // ReferenceError: v is not defined
+      // 正确的写法
+      if (typeof unde === "undefined") {
+        // ...
+      }
+
+      // 对象返回 object
+      // 空数组（[]）的类型也是 object，在 JavaScript 内部，数组本质上只是一种特殊的对象
+      typeof window; // "object"
+      typeof {}; // "object"
+      typeof []; // "object"
+      // instanceof 运算符可以区分数组和对象
+      var o = {};
+      var a = [];
+      o instanceof Array; // false
+      a instanceof Array; // true
+
+      // null 返回 object
+      typeof null; // "object"
+    </script>
+  </body>
+</html>

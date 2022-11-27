@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 使用字面量（literal）直接表示一个数值时
+      // JavaScript 对整数提供四种进制的表示方法：十进制、十六进制、八进制、二进制
+      /*
+        十进制：没有前导 0 的数值。
+        八进制：有前缀 0o 或 0O 的数值，或者有前导 0、且只用到 0-7 的八个阿拉伯数字的数值
+        十六进制：有前缀 0x 或 0X 的数值
+        二进制：有前缀 0b 或 0B 的数值
+      */
+
+      // 默认情况下，JavaScript 内部会自动将八进制、十六进制、二进制转为十进制
+      // 如果八进制、十六进制、二进制的数值里面，出现不属于该进制的数字，就会报错
+      /*
+        0xff  // 255
+        0o377 // 255
+        0b11  // 3
+        0xzz  // 报错
+        0o88  // 报错
+        0b22  // 报错
+      */
+
+      // 有前导 0 的数值会被视为八进制，但是如果前导 0 后面有数字 8 和 9，则该数值被视为十进制
+      0888; // 888
+      0777; // 511
+      // 前导 0 表示八进制，处理时很容易造成混乱。
+      // ES5 的严格模式和 ES6，已经废除了这种表示法，但浏览器为了兼容代码目前还继续支持这种方式
+    </script>
+  </body>
+</html>

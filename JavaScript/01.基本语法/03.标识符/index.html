@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 标识符（identifier）
+      // 用来识别各种值的合法名称
+
+      // 第一个字符，可以是任意 Unicode 字母，以及美元符号（$）和下划线（_）
+      // 第二个字符及后面的字符，除了 Unicode 字母、美元符号和下划线，还可以用数字0-9
+
+      // 合法字符
+      arg0;
+      _tmp;
+      $elem;
+      π;
+
+      // 不合法字符
+      /*
+      1a   // 第一个字符不能是数字
+      23   // 同上
+      ***  // 标识符不能包含星号
+      a+b  // 标识符不能包含加号
+      -d   // 标识符不能包含减号或连词线
+      */
+
+      // 中文是合法的标识符，可以用作变量名
+      var 变量 = 1;
+
+      // 保留字
+      /*
+        arguments break case catch class const continue debugger
+        default delete do else enum eval export extends false finally
+        for function if implements import in instanceof interface let
+        new null package private protected public return static super
+        switch this throw true try typeof var void while with yield
+      */
+    </script>
+  </body>
+</html>

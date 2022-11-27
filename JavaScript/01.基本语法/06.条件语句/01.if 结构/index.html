@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // if 结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句
+      // true 表示[真]，false 表示[伪]
+      if (true) console.log();
+
+      if (true) {
+        console.log();
+      }
+
+      var x = 1;
+      var y = 2;
+      if ((x = y)) {
+        console.log(x); // "2"
+      }
+
+      // if (x = 2) // 不报错
+      // if (2 = x) // 报错
+    </script>
+  </body>
+</html>

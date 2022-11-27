@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // JavaScript 提供了几个特殊的数值
+
+      // 正零和负零
+      // JavaScript 的 64 位浮点数之中，有一个二进制位是符号位
+      // 任何一个数都有一个对应的负值，就连 0 也不例外
+
+      // JavaScript 内部实际上存在 2 个 0，一个是 +0，一个是 -0
+      // 区别就是 64 位浮点数表示法的符号位不同，它们是等价的
+      0 === -0; // true
+      0 === +0; // true
+      -0 === +0; // true
+
+      // 几乎所有场合，正零和负零都会被当作正常的 0
+      /*
+        +0 // 0
+        -0 // 0
+        (-0).toString() // '0'
+        (+0).toString() // '0'
+      */
+
+      // 唯一有区别的场合是，+0 或 -0 当作分母，返回的值是不相等的
+      1 / +0 === 1 / -0; // false
+      // 因为除以正零得到 +Infinity，除以负零得到 -Infinity，这两者是不相等的
+
+      // NaN 是 JavaScript 的特殊值，表示“非数字”（Not a Number）
+      5 - "x"; // NaN
+
+      // 另外，一些数学函数的运算结果会出现 NaN
+      Math.acos(2); // NaN
+      Math.log(-1); // NaN
+      Math.sqrt(-1); // NaN
+
+      // 0 除以 0 也会得到NaN
+      0 / 0; // NaN
+
+      // NaN 不是独立的数据类型，而是一个特殊数值，它的数据类型依然属于 Number
+      typeof NaN; // 'number'
+
+      // NaN 不等于任何值，包括它本身
+      NaN === NaN; // false
+
+      // 数组的 indexOf 方法内部使用的是严格相等运算符，所以该方法对 NaN 不成立
+      [NaN].indexOf(NaN); // -1
+
+      // NaN 在布尔运算时被当作 false
+      Boolean(NaN); // false
+
+      // NaN 与任何数（包括它自己）的运算，得到的都是 NaN
+      NaN + 32; // NaN
+      NaN - 32; // NaN
+      NaN * 32; // NaN
+      NaN / 32; // NaN
+
+      // Infinity 表示“无穷”，用来表示两种场景
+      // 一种是一个正的数值太大，或一个负的数值太小，无法表示
+      // 另一种是非 0 数值除以 0，得到 Infinity
+      Math.pow(2, 1024); // Infinity
+      0 / 0; // NaN
+      1 / 0; // Infinity
+
+      // Infinity 有正负之分，Infinity 表示正的无穷，-Infinity 表示负的无穷
+      Infinity === -Infinity; // false
+      1 / -0; // -Infinity
+      -1 / -0; // Infinity
+
+      // Infinity 大于一切数值（除了 NaN），-Infinity 小于一切数值（除了 NaN）
+      Infinity > 1000; // true
+      -Infinity < -1000; // true
+
+      // Infinity 与 NaN 比较，总是返回 false
+      Infinity > NaN; // false
+      -Infinity > NaN; // false
+      Infinity < NaN; // false
+      -Infinity < NaN; // false
+
+      // Infinity 的四则运算，符合无穷的数学计算规则
+      5 * Infinity; // Infinity
+      5 - Infinity; // -Infinity
+      Infinity / 5; // Infinity
+      5 / Infinity; // 0
+
+      0 * Infinity; // NaN
+      0 / Infinity; // 0
+      Infinity / 0; // Infinity
+
+      // Infinity 加上或乘以 Infinity，返回的还是 Infinity
+      Infinity + Infinity; // Infinity
+      Infinity * Infinity; // Infinity
+
+      // Infinity 减去或除以 Infinity，得到 NaN
+      Infinity - Infinity; // NaN
+      Infinity / Infinity; // NaN
+
+      // Infinity 与 null 计算时，null 会转成 0，等同于与 0 的计算
+      null * Infinity; // NaN
+      null / Infinity; // 0
+      Infinity / null; // Infinity
+
+      // Infinity 与 undefined 计算，返回的都是 NaN
+      undefined + Infinity; // NaN
+      undefined - Infinity; // NaN
+      undefined * Infinity; // NaN
+      undefined / Infinity; // NaN
+      Infinity / undefined; // NaN
+    </script>
+  </body>
+</html>
